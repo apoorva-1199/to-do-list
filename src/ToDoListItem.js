@@ -1,20 +1,35 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import {FaCheck,FaRegTrashAlt } from "react-icons/fa";
+
 
 class TodoListItem extends React.Component {
-  
+  constructor(props) {
+    super(props);
+    this.onClickDone = this.onClickDone.bind(this);
+    this.onClickDelete = this.onClickDelete.bind(this);
+  }
+  onClickDone() {
+    var index = parseInt(this.props.index);
+    this.props.markTodoDone(index);
+  }
+  onClickDelete(){
+    var index = parseInt(this.props.index);
+    this.props.deleteItem(index);
+  }
+
   render () {
     var todoClass = this.props.item.done ? "done" : "undone";
     return(
       <li className="list-group-item ">
         <div className={todoClass}>
-          <span className="glyphicon glyphicon-ok icon" aria-hidden="true" onClick={this.onClickDone}></span>
+          <FaCheck className="check" onClick={this.onClickDone}/>
           {this.props.item.value}
-          <button type="button" className="close" onClick={this.onClickClose}>&times;</button>
+          <FaRegTrashAlt className="delete" onClick={this.onClickDelete}/>
         </div>
       </li>     
     );
-  }
 }
+}
+
 
 export default TodoListItem;

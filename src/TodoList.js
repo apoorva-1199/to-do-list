@@ -1,13 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import todoItems from './todoItems';
+import TodoListItem from './ToDoListItem'
 
-const listItems = todoItems.map((item) => <li key={item.index}>{item.value}</li>);
 class TodoList extends React.Component {
     
   render () {
+    var items = this.props.items.map((item, index) => {
+      return (
+        <TodoListItem key={index} item={item} index={index} markTodoDone={this.props.markTodoDone} deleteItem = {this.props.deleteItem} />
+      );
+    });
     return (
-      <ul className="list-group"> {listItems} </ul>
+      <ul className="list-group"> {items} </ul>
     );
   }
 }
