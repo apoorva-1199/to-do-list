@@ -1,20 +1,14 @@
 import React from 'react';
-import {FaAngleRight,FaRegTrashAlt } from "react-icons/fa";
+import {FaCheck,FaRegTrashAlt } from "react-icons/fa";
 
-
-class TodoListItem extends React.Component {
+class CompletedListItem  extends React.Component {
   constructor(props) {
     super(props);
-    this.onClickDone = this.onClickDone.bind(this);
     this.onClickDelete = this.onClickDelete.bind(this);
-  }
-  onClickDone() {
-    var index = parseInt(this.props.index);
-    this.props.markTodoDone(index);
   }
   onClickDelete(){
     var index = parseInt(this.props.index);
-    this.props.deleteItem(index);
+    this.props.deleteCompletedItem(index);
   }
 
   render () {
@@ -22,7 +16,7 @@ class TodoListItem extends React.Component {
     return(
       <li className="list-group-item ">
         <div className={todoClass}>
-          <FaAngleRight className="check" onClick={this.onClickDone}/>
+          <FaCheck className="check"/>
           {this.props.item.value}
           <FaRegTrashAlt className="delete" onClick={this.onClickDelete}/>
         </div>
@@ -32,4 +26,4 @@ class TodoListItem extends React.Component {
 }
 
 
-export default TodoListItem;
+export default CompletedListItem ;

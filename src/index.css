@@ -33,6 +33,7 @@ ul > li:hover {
 }
 .check {
   vertical-align: middle;
+  margin-right: 10px;
 }
 .delete {
   vertical-align: middle;

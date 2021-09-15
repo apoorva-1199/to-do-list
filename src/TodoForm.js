@@ -14,8 +14,6 @@ class TodoForm extends React.Component {
       this.refs.form.reset();
     }
   }
-  
-  
  render () {
     return (
       <form  ref="form" onSubmit={this.onSubmit} className="form-inline">

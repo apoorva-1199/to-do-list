@@ -3,25 +3,17 @@ import React from 'react';
 import TodoHeader from './TodoHeader';
 import TodoList from './TodoList';
 import TodoForm from './TodoForm';
+import CompletedList from './CompletedList';
 import todoItems from './todoItems';
-/*
-Todo app structure
+import completedItems from './completedItems';
 
-TodoApp
-	- TodoHeader
-	- TodoList
-    - TodoListItem #1
-		- TodoListItem #2
-		  ...
-		- TodoListItem #N
-	- TodoForm
-*/  
 class App extends React.Component {
   constructor (props) {
     super(props);
     this.addItem = this.addItem.bind(this);
     this.markTodoDone = this.markTodoDone.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
+    this.deleteCompletedItem =this.deleteCompletedItem.bind(this);
   }
 
   addItem(todoItem) {
@@ -37,21 +29,28 @@ class App extends React.Component {
     var todo = todoItems[itemIndex];
     todoItems.splice(itemIndex, 1);
     todo.done = !todo.done;
-    todo.done ? todoItems.push(todo) : todoItems.unshift(todo);
+    todo.done ? completedItems.push(todo):todoItems.push(todo) ;
     this.setState({todoItems: todoItems});  
+    console.log(todoItems);
+    console.log(completedItems);
   }
   
   deleteItem(itemIndex){
     todoItems.splice(itemIndex, 1);
     this.setState({todoItems: todoItems});
   }
+  deleteCompletedItem(itemIndex){
+    completedItems.splice(itemIndex, 1);
+    this.setState({completedItems:completedItems});
+  }
   
   render() {
     return (
       <div id="main">
         <TodoHeader />
-        <TodoList items={todoItems} markTodoDone={this.markTodoDone} deleteItem = {this.deleteItem}/>
+        <TodoList items={todoItems} markTodoDone={this.markTodoDone} deleteItem = {this.deleteItem} />
         <TodoForm addItem={this.addItem}/>
+        <CompletedList items ={completedItems} deleteCompletedItem = {this.deleteCompletedItem}/>
       </div>
     );
   }
