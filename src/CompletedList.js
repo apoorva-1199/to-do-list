@@ -9,8 +9,11 @@ class CompletedList extends React.Component {
         <CompletedListItem key={index} item={item} index={index}  deleteCompletedItem = {this.props.deleteCompletedItem} />
       );
     });
-    return (
+
+    return (<>
+      <h4>Completed Items: {items.length}</h4>
       <ul className="list-group"> {items} </ul>
+      </>
     );
   }
 }

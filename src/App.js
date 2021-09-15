@@ -23,6 +23,7 @@ class App extends React.Component {
       done: false
     });
     this.setState({todoItems: todoItems});
+
   }
 
   markTodoDone(itemIndex){
@@ -31,8 +32,6 @@ class App extends React.Component {
     todo.done = !todo.done;
     todo.done ? completedItems.push(todo):todoItems.push(todo) ;
     this.setState({todoItems: todoItems});  
-    console.log(todoItems);
-    console.log(completedItems);
   }
   
   deleteItem(itemIndex){
