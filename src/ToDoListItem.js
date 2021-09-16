@@ -1,7 +1,5 @@
 import React from 'react';
-import {FaAngleRight,FaRegTrashAlt } from "react-icons/fa";
-
-
+import "../node_modules/font-awesome/css/font-awesome.min.css"
 class TodoListItem extends React.Component {
   constructor(props) {
     super(props);
@@ -20,13 +18,17 @@ class TodoListItem extends React.Component {
   render () {
     var todoClass = this.props.item.done ? "done" : "undone";
     return(
+      
       <li className="list-group-item ">
         <div className={todoClass}>
-          <FaAngleRight className="check" onClick={this.onClickDone}/>
+          <i aria-hidden="true"className="fa fa-circle-o check"  ></i>
+          <i aria-hidden="true"className="fa fa-check-circle check hidden" onClick={this.onClickDone} ></i>
           {this.props.item.value}
-          <FaRegTrashAlt className="delete" onClick={this.onClickDelete}/>
+          {this.props.item.completeBy}
+          <i aria-hidden="true" className="fa fa-trash delete" onClick={this.onClickDelete}></i>
         </div>
-      </li>     
+      </li>   
+     
     );
 }
 }

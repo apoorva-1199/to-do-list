@@ -1,5 +1,5 @@
 import React from 'react';
-import {FaCheck,FaRegTrashAlt } from "react-icons/fa";
+import "../node_modules/font-awesome/css/font-awesome.min.css"
 
 class CompletedListItem  extends React.Component {
   constructor(props) {
@@ -16,9 +16,9 @@ class CompletedListItem  extends React.Component {
     return(
       <li className="list-group-item ">
         <div className={todoClass}>
-          <FaCheck className="check"/>
+          <i aria-hidden="true"className="fa fa-check-circle check" ></i>
           {this.props.item.value}
-          <FaRegTrashAlt className="delete" onClick={this.onClickDelete}/>
+          <i aria-hidden="true" className="fa fa-trash delete" onClick={this.onClickDelete}></i>
         </div>
       </li>     
     );

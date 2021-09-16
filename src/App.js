@@ -20,6 +20,7 @@ class App extends React.Component {
     todoItems.unshift({
       index: todoItems.length+1, 
       value: todoItem.newItemValue, 
+      completeBy: todoItem.completeBy,
       done: false
     });
     this.setState({todoItems: todoItems});
@@ -47,8 +48,8 @@ class App extends React.Component {
     return (
       <div id="main">
         <TodoHeader />
-        <TodoList items={todoItems} markTodoDone={this.markTodoDone} deleteItem = {this.deleteItem} />
         <TodoForm addItem={this.addItem}/>
+        <TodoList items={todoItems} markTodoDone={this.markTodoDone} deleteItem = {this.deleteItem} />
         <CompletedList items ={completedItems} deleteCompletedItem = {this.deleteCompletedItem}/>
       </div>
     );
