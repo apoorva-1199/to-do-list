@@ -20,11 +20,16 @@ class TodoListItem extends React.Component {
     console.log();
   }
   render() {
-    console.log(this.props.item.index);
     var todoClass = this.props.item.done ? "done" : "undone";
+    const { provided, innerRef } = this.props;
     return (
       <>
-        <li className="list-group-item ">
+        <li
+          className="list-group-item "
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+          ref={innerRef}
+        >
           <div className={todoClass}>
             <i aria-hidden="true" className="fa fa-circle-o check"></i>
             <i
