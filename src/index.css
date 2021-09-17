@@ -20,6 +20,8 @@ h1 {
 
 ul {
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 ul > li {
@@ -33,14 +35,14 @@ ul > li:hover {
 }
 .check {
   vertical-align: middle;
-  margin-right: 10px;
+  margin-top: 3px;
 }
 .check:hover {
   opacity: 0;
 }
 
 .hidden {
-  margin-left: -24px;
+  margin-left: -14px;
   opacity: 0;
 }
 .hidden:hover {
@@ -49,7 +51,11 @@ ul > li:hover {
 .delete {
   vertical-align: middle;
   float: right;
-  margin-top: 5px;
+  margin-top: 4px;
+}
+
+.delete:hover {
+  color: red;
 }
 .form-inline {
   display: flex;
@@ -57,14 +63,21 @@ ul > li:hover {
 }
 
 .form-control {
-  width: 50%;
+  width: 70%;
   padding: 10px;
   border-radius: 5px;
-  height: 20px;
+  height: 30px;
   margin-right: 10px;
+  resize: none;
+}
+.react-datepicker-wrapper {
+  display: inline-block;
+  padding: 0;
+  border: 0;
+  width: 20% !important;
 }
 .datePicker {
-  width: 50%;
+  width: 60%;
   padding: 10px;
   border-radius: 5px;
   height: 20px;
@@ -73,6 +86,9 @@ ul > li:hover {
 .btn {
   padding: 12px;
   border-radius: 5px;
+  display: flex;
+  align-items: center;
+  height: 45px;
 }
 
 .btn:hover {
@@ -81,9 +97,28 @@ ul > li:hover {
 
 .done {
   color: red;
-  text-decoration: line-through;
+  display: flex;
 }
 
 .undone {
-  color: #61dafb;
+  color: black;
+  display: flex;
+}
+
+.task {
+  width: 80%;
+  margin-left: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.date {
+  margin-right: 15px;
+}
+
+.done > div {
+  text-decoration: line-through;
+}
+#completed:hover {
+  opacity: 1;
 }
