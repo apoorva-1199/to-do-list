@@ -2,8 +2,7 @@ import React from "react";
 import TodoList from "./Components/Todo/todolist.component";
 import TodoForm from "./Components/Todo/todoform.component";
 import CompletedList from "./Components/Completed/completedlist.component";
-import todoItems from "./Data/Todo/todoItems";
-import completedItems from "./Data/Completed/completedItems";
+import { todoItems, completedItems } from "./Data/test";
 
 class App extends React.Component {
   constructor(props) {
