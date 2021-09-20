@@ -1,14 +1,7 @@
 import React from "react";
 import TodoListItem from "./todolistitem.component";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
-
-const reorder = (list, startIndex, endIndex) => {
-  const result = Array.from(list);
-  const [removed] = result.splice(startIndex, 1);
-  result.splice(endIndex, 0, removed);
-
-  return result;
-};
+import { reorder } from "../../Utilities/utility";
 
 class TodoList extends React.Component {
   constructor(props) {
@@ -31,13 +24,14 @@ class TodoList extends React.Component {
       result.source.index,
       result.destination.index
     );
+    console.log(items);
     this.setState({
-      items,
+      tasks: [...items],
     });
   }
 
   render() {
-    var tasks = this.props.items.map((item, index) => {
+    var tasks = this.state.tasks.map((item, index) => {
       return (
         <Draggable
           key={index.toString()}

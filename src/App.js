@@ -20,6 +20,7 @@ class App extends React.Component {
       completeBy: todoItem.newItemDate,
       done: false,
     });
+
     this.setState({ todoItems: todoItems });
   }
 
@@ -28,6 +29,7 @@ class App extends React.Component {
     todoItems.splice(itemIndex, 1);
     todo.done = !todo.done;
     todo.done ? completedItems.push(todo) : todoItems.push(todo);
+    console.log(todoItems);
     this.setState({ todoItems: todoItems });
   }
 

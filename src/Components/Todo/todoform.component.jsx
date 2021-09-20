@@ -9,6 +9,7 @@ class TodoForm extends React.Component {
     this.state = {
       startDate: new Date(),
     };
+    this.formInputRef = React.createRef();
     this.onSubmit = this.onSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
@@ -20,30 +21,27 @@ class TodoForm extends React.Component {
 
   onSubmit(event) {
     event.preventDefault();
-    var newItemValue = this.refs.itemName.value;
+    const formInput = this.formInputRef.current;
+    // var newItemValue = this.refs.itemName.value;
+    var newItemValue = formInput.value;
     var newItemDate = this.state.startDate.toLocaleDateString();
     if (newItemValue) {
       this.props.addItem({ newItemValue, newItemDate });
-      this.refs.form.reset();
+      formInput.value = " ";
     }
-
-    // if(newItemDate){
-    //   this.props.addItem({newItemDate});
-    // }
     console.log(newItemDate);
     console.log(todoItems);
   }
 
   render() {
     return (
-      <form ref="form" onSubmit={this.onSubmit} className="form-inline">
+      <form onSubmit={this.onSubmit} className="form-inline">
         <textarea
-          ref="itemName"
+          ref={this.formInputRef}
           className="form-control"
           placeholder="add a new todo..."
         />
         <DatePicker
-          ref="lastDate"
           className="datePicker"
           selected={this.state.startDate}
           onChange={this.handleChange}
