@@ -1,14 +1,14 @@
 import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { todoItems } from "../../Data/test";
 
 class TodoForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      startDate: new Date(),
+      startDate: this.props.startDate,
     };
+    this.formRef = React.createRef();
     this.formInputRef = React.createRef();
     this.onSubmit = this.onSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -21,21 +21,19 @@ class TodoForm extends React.Component {
 
   onSubmit(event) {
     event.preventDefault();
+    const form = this.formRef.current;
     const formInput = this.formInputRef.current;
-    // var newItemValue = this.refs.itemName.value;
-    var newItemValue = formInput.value;
-    var newItemDate = this.state.startDate.toLocaleDateString();
-    if (newItemValue) {
-      this.props.addItem({ newItemValue, newItemDate });
-      formInput.value = " ";
+    var data = formInput.value;
+    var date = this.state.startDate.toLocaleDateString();
+    if (data && date) {
+      this.props.addItem({ data, date });
+      form.reset();
     }
-    console.log(newItemDate);
-    console.log(todoItems);
   }
 
   render() {
     return (
-      <form onSubmit={this.onSubmit} className="form-inline">
+      <form onSubmit={this.onSubmit} className="form-inline" ref={this.formRef}>
         <textarea
           ref={this.formInputRef}
           className="form-control"

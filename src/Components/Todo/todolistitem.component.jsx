@@ -5,15 +5,18 @@ import ReactTooltip from "react-tooltip";
 class TodoListItem extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      tasks: this.props.tasks,
+    };
     this.onClickDone = this.onClickDone.bind(this);
     this.onClickDelete = this.onClickDelete.bind(this);
   }
   onClickDone() {
-    var index = parseInt(this.props.index);
+    var index = parseInt(this.props.id);
     this.props.markTodoDone(index);
   }
   onClickDelete() {
-    var index = parseInt(this.props.index);
+    var index = parseInt(this.props.id);
     this.props.deleteItem(index);
   }
   render() {
@@ -34,9 +37,9 @@ class TodoListItem extends React.Component {
               className="fa fa-check-circle check hidden"
               onClick={this.onClickDone}
             ></i>
-            <div className="task" data-tip data-for={this.props.item.index}>
+            <div className="task" data-tip data-for={this.props.item.id}>
               {this.props.item.value}
-              <ReactTooltip id={this.props.item.index.toString()}>
+              <ReactTooltip id={this.props.item.id}>
                 <span>{this.props.item.value}</span>
               </ReactTooltip>
             </div>

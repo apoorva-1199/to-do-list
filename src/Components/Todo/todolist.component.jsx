@@ -1,7 +1,6 @@
 import React from "react";
 import TodoListItem from "./todolistitem.component";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
-import { reorder } from "../../Utilities/utility";
 
 class TodoList extends React.Component {
   constructor(props) {
@@ -14,20 +13,9 @@ class TodoList extends React.Component {
   }
 
   handleOnDragEnd(result) {
-    // dropped outside the list
-    if (!result.destination) {
-      return;
-    }
+    // dropped outside the lists
     console.log(result);
-    const items = reorder(
-      this.state.tasks,
-      result.source.index,
-      result.destination.index
-    );
-    console.log(items);
-    this.setState({
-      tasks: [...items],
-    });
+    this.props.onReorder(result.source.index, result.destination.index);
   }
 
   render() {
@@ -48,6 +36,8 @@ class TodoList extends React.Component {
               completeBy={item.completeBy}
               markTodoDone={this.props.markTodoDone}
               deleteItem={this.props.deleteItem}
+              onReorder={this.props.onReorder}
+              {...this.state}
             />
           )}
         </Draggable>

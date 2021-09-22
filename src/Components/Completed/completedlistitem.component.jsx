@@ -8,7 +8,7 @@ class CompletedListItem extends React.Component {
     this.onClickDelete = this.onClickDelete.bind(this);
   }
   onClickDelete() {
-    var index = parseInt(this.props.index);
+    var index = parseInt(this.props.id);
     this.props.deleteCompletedItem(index);
   }
 
@@ -22,9 +22,9 @@ class CompletedListItem extends React.Component {
             className="fa fa-check-circle check"
             id="completed"
           ></i>
-          <div className="task" data-tip data-for={this.props.item.index}>
+          <div className="task" data-tip data-for={this.props.item.id}>
             {this.props.item.value}
-            <ReactTooltip id={this.props.item.index.toString()}>
+            <ReactTooltip id={this.props.item.id}>
               <span>{this.props.item.value}</span>
             </ReactTooltip>
           </div>
