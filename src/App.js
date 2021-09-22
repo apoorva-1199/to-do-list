@@ -20,27 +20,20 @@ class App extends React.Component {
     this.onReorder = this.onReorder.bind(this);
   }
 
-  // componentDidMount() {
-  //   const listItems = localStorage.getItem("To-do-List");
-  //   console.log(listItems);
-  //   if (!listItems) {
-  //     return;
-  //   } else {
-  //     this.setState({
-  //       todoItems: listItems,
-  //     });
-  //   }
-  // }
-  componentDidUpdate() {
-    const listData = this.state.todoItems;
-    localStorage.setItem("To-do-List", listData);
+  componentDidMount() {
+    const listItems = JSON.parse(localStorage.getItem("To-do-List"));
+    console.log(listItems);
+
+    this.setState({
+      todoItems: listItems,
+    });
   }
-  // shouldComponentUpdate() {
-  //   const listItems = localStorage.getItem("To-do-List");
-  //   this.setState({
-  //     todoItems: listItems,
-  //   });
-  // }
+
+  componentDidUpdate() {
+    const listData = JSON.stringify(this.state.todoItems);
+    localStorage.setItem("To-do-List", listData);
+    console.log(listData);
+  }
 
   addItem(todoItem) {
     var pendingList = this.state.todoItems.pending;

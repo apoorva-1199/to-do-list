@@ -5,9 +5,9 @@ import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 class TodoList extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      tasks: this.props.items,
-    };
+    // this.state = {
+    //   tasks: this.props.items,
+    // };
 
     this.handleOnDragEnd = this.handleOnDragEnd.bind(this);
   }
@@ -19,7 +19,7 @@ class TodoList extends React.Component {
   }
 
   render() {
-    var tasks = this.state.tasks.map((item, index) => {
+    var tasks = this.props.items.map((item, index) => {
       return (
         <Draggable
           key={index.toString()}
