@@ -1,6 +1,13 @@
 import React from "react";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import {
+  Form,
+  Button,
+  TextArea,
+  DatePickerStyle,
+} from "../Styled/list.component";
+
+// const datePickerClass = "datePicker";
 
 class TodoForm extends React.Component {
   constructor(props) {
@@ -33,23 +40,16 @@ class TodoForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmit} className="form-inline" ref={this.formRef}>
-        <textarea
-          ref={this.formInputRef}
-          className="form-control"
-          placeholder="add a new todo..."
-        />
-        <DatePicker
-          className="datePicker"
+      <Form onSubmit={this.onSubmit} ref={this.formRef}>
+        <TextArea ref={this.formInputRef} placeholder="add a new todo..." />
+        <DatePickerStyle
           selected={this.state.startDate}
           onChange={this.handleChange}
           name="startDate"
           dateFormat="MM/dd/yyyy"
         />
-        <button type="submit" className="btn btn-default">
-          Add
-        </button>
-      </form>
+        <Button type="submit">Add</Button>
+      </Form>
     );
   }
 }

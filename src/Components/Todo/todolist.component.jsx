@@ -1,17 +1,14 @@
 import React from "react";
 import TodoListItem from "./todolistitem.component";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { UnorderedList } from "../Styled/list.component";
 
 class TodoList extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {
-    //   tasks: this.props.items,
-    // };
 
     this.handleOnDragEnd = this.handleOnDragEnd.bind(this);
   }
-
   handleOnDragEnd(result) {
     // dropped outside the lists
     console.log(result);
@@ -49,14 +46,13 @@ class TodoList extends React.Component {
         <DragDropContext onDragEnd={this.handleOnDragEnd}>
           <Droppable droppableId="droppable-1">
             {(provided) => (
-              <ul
-                className="list-group"
+              <UnorderedList
                 ref={provided.innerRef}
                 {...provided.droppableProps}
               >
                 {tasks}
                 {provided.placeholder}
-              </ul>
+              </UnorderedList>
             )}
           </Droppable>
         </DragDropContext>

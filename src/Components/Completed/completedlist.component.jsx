@@ -1,5 +1,6 @@
 import React from "react";
 import CompletedListItem from "./completedlistitem.component";
+import { UnorderedList } from "../Styled/list.component";
 
 class CompletedList extends React.Component {
   render() {
@@ -18,7 +19,7 @@ class CompletedList extends React.Component {
     return (
       <>
         <h4>Completed Items: {items.length}</h4>
-        <ul className="list-group"> {items} </ul>
+        <UnorderedList> {items} </UnorderedList>
       </>
     );
   }

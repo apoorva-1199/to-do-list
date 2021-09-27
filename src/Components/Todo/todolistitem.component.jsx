@@ -1,13 +1,18 @@
 import React from "react";
 import "../../../node_modules/font-awesome/css/font-awesome.min.css";
 import ReactTooltip from "react-tooltip";
+import {
+  Date,
+  ListItemDiv,
+  Task,
+  CheckCircle,
+  Delete,
+  CheckCircleHidden,
+} from "../Styled/list.component";
 
 class TodoListItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      tasks: this.props.tasks,
-    };
     this.onClickDone = this.onClickDone.bind(this);
     this.onClickDelete = this.onClickDelete.bind(this);
   }
@@ -20,36 +25,37 @@ class TodoListItem extends React.Component {
     this.props.deleteItem(index);
   }
   render() {
-    var todoClass = this.props.item.done ? "done" : "undone";
     const { provided, innerRef } = this.props;
     return (
       <>
         <li
-          className="list-group-item "
           {...provided.draggableProps}
           {...provided.dragHandleProps}
           ref={innerRef}
         >
-          <div className={todoClass}>
-            <i aria-hidden="true" className="fa fa-circle-o check"></i>
-            <i
+          <ListItemDiv item={this.props.item}>
+            <CheckCircle
               aria-hidden="true"
-              className="fa fa-check-circle check hidden"
+              className="fa fa-circle-o check"
+            ></CheckCircle>
+            <CheckCircleHidden
+              aria-hidden="true"
+              className="fa fa-check-circle"
               onClick={this.onClickDone}
-            ></i>
-            <div className="task" data-tip data-for={this.props.item.id}>
+            ></CheckCircleHidden>
+            <Task data-tip data-for={this.props.item.id}>
               {this.props.item.value}
               <ReactTooltip id={this.props.item.id}>
                 <span>{this.props.item.value}</span>
               </ReactTooltip>
-            </div>
-            <div className="date">{this.props.item.completeBy}</div>
-            <i
+            </Task>
+            <Date>{this.props.item.completeBy}</Date>
+            <Delete
               aria-hidden="true"
-              className="fa fa-trash delete"
+              className="fa fa-trash"
               onClick={this.onClickDelete}
-            ></i>
-          </div>
+            ></Delete>
+          </ListItemDiv>
         </li>
       </>
     );

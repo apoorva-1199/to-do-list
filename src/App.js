@@ -2,6 +2,7 @@ import React from "react";
 import TodoList from "./Components/Todo/todolist.component";
 import TodoForm from "./Components/Todo/todoform.component";
 import CompletedList from "./Components/Completed/completedlist.component";
+import { MyStyledContainer } from "../src/Components/Styled/list.component";
 
 class App extends React.Component {
   constructor(props) {
@@ -96,7 +97,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div id="main">
+      <MyStyledContainer>
         <h1>Todo list</h1>
         <TodoForm addItem={this.addItem} startDate={this.state.startDate} />
         <TodoList
@@ -109,7 +110,7 @@ class App extends React.Component {
           items={this.state.todoItems.completed}
           deleteCompletedItem={this.deleteCompletedItem}
         />
-      </div>
+      </MyStyledContainer>
     );
   }
 }
